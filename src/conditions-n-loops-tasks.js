@@ -21,8 +21,8 @@
  *  0  => true
  *  -5 => false
  */
-function isPositive(/* number */) {
-  throw new Error('Not implemented');
+function isPositive(number) {
+  return number >= 0;
 }
 
 /**
@@ -38,8 +38,14 @@ function isPositive(/* number */) {
  *  -5, 0, 5      => 5
  *  -0.1, 0, 0.2  => 0.2
  */
-function getMaxNumber(/* a, b, c */) {
-  throw new Error('Not implemented');
+function getMaxNumber(a, b, c) {
+  if (a >= b && a >= c) {
+    return a;
+  }
+  if (b >= a && b >= c) {
+    return b;
+  }
+  return c;
 }
 
 /**
@@ -82,8 +88,13 @@ function canQueenCaptureKing(/* queen, king */) {
  *  2, 2, 5   => false
  *  3, 0, 3   => false
  */
-function isIsoscelesTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isIsoscelesTriangle(a, b, c) {
+  if (a === b || a === c || b === c) {
+    if (a + b > c && a + c > b && b + c > a) {
+      return true;
+    }
+  }
+  return false;
 }
 
 /**
@@ -100,8 +111,30 @@ function isIsoscelesTriangle(/* a, b, c */) {
  *  10  => X
  *  26  => XXVI
  */
-function convertToRomanNumerals(/* num */) {
-  throw new Error('Not implemented');
+function convertToRomanNumerals(num) {
+  let inputNum = num;
+  let result = '';
+  while (inputNum >= 10) {
+    result += 'X';
+    inputNum -= 10;
+  }
+  if (inputNum >= 9) {
+    result += 'IX';
+    inputNum -= 9;
+  }
+  if (inputNum >= 5) {
+    result += 'V';
+    inputNum -= 5;
+  }
+  if (inputNum >= 4) {
+    result += 'IV';
+    inputNum -= 4;
+  }
+  while (inputNum >= 1) {
+    result += 'I';
+    inputNum -= 1;
+  }
+  return result;
 }
 
 /**
@@ -119,8 +152,98 @@ function convertToRomanNumerals(/* num */) {
  *  '10,5'    => 'one zero point five'
  *  '1950.2'  => 'one nine five zero point two'
  */
-function convertNumberToString(/* numberStr */) {
-  throw new Error('Not implemented');
+function convertNumberToString(numberStr) {
+  let result = '';
+  for (let i = 0; i < numberStr.length; i += 1) {
+    switch (numberStr[i]) {
+      case '9':
+        if (i === 0) {
+          result += 'nine';
+        } else {
+          result += ' nine';
+        }
+        break;
+      case '8':
+        if (i === 0) {
+          result += 'eight';
+        } else {
+          result += ' eight';
+        }
+        break;
+      case '7':
+        if (i === 0) {
+          result += 'seven';
+        } else {
+          result += ' seven';
+        }
+        break;
+      case '6':
+        if (i === 0) {
+          result += 'six';
+        } else {
+          result += ' six';
+        }
+        break;
+      case '5':
+        if (i === 0) {
+          result += 'five';
+        } else {
+          result += ' five';
+        }
+        break;
+      case '4':
+        if (i === 0) {
+          result += 'four';
+        } else {
+          result += ' four';
+        }
+        break;
+      case '3':
+        if (i === 0) {
+          result += 'three';
+        } else {
+          result += ' three';
+        }
+        break;
+      case '2':
+        if (i === 0) {
+          result += 'two';
+        } else {
+          result += ' two';
+        }
+        break;
+      case '1':
+        if (i === 0) {
+          result += 'one';
+        } else {
+          result += ' one';
+        }
+        break;
+      case '0':
+        if (i === 0) {
+          result += 'zero';
+        } else {
+          result += ' zero';
+        }
+        break;
+      case '-':
+        if (i === 0) {
+          result += 'minus';
+        } else {
+          result += ' minus';
+        }
+        break;
+      case '.':
+        result += ' point';
+        break;
+      case ',':
+        result += ' point';
+        break;
+      default:
+        break;
+    }
+  }
+  return result;
 }
 
 /**
@@ -135,8 +258,17 @@ function convertNumberToString(/* numberStr */) {
  *  '0123210'   => true
  *  'qweqwe'    => false
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  let left = 0;
+  let right = str.length - 1;
+  while (left < right) {
+    if (str[left] !== str[right]) {
+      return false;
+    }
+    left += 1;
+    right -= 1;
+  }
+  return true;
 }
 
 /**
